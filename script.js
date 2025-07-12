@@ -67,7 +67,6 @@ const nextBtn = () => {
 
 const backBtn = () => {
   index--;
-  console.log(index);
   if (index < 0) {
     index = 19;
     page--;
