@@ -26,23 +26,23 @@ const display = async (index, page) => {
       <div class="details">
       <table>
         <tr>
-          <td>Name:</td>
+          <td>Name: </td>
           <td>${name}</td>
         </tr>
         <tr>
-          <td>Status:</td>
+          <td>Status: </td>
           <td>${status}</td>
         </tr>
         <tr>
-          <td>Species:</td>
+          <td>Species: </td>
           <td>${species}</td>
         </tr>
         <tr>
-          <td>Gender:</td>
+          <td>Gender: </td>
           <td>${gender}</td>
         </tr>
         <tr>
-          <td>Origin:s</td>
+          <td>Origin: </td>
           <td>${origin.name}</td>
         </tr>
       </table>
