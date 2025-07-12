@@ -1,0 +1,41 @@
+*{
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: WubbaLubbaDubDub;
+    src: url(fonts/WubbaLubbaDubDub.ttf);
+}
+
+body{
+    font-family: WubbaLubbaDubDub;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.image-container > img{
+    width: 200px;
+    height: 200px;
+}
+
+button{
+    font-family: WubbaLubbaDubDub;
+    font-weight: bold;
+    font-size: large;
+    width: 100px;
+}
