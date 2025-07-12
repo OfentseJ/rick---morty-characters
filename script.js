@@ -1,10 +1,13 @@
 const container = document.getElementById("container");
 
 let index = 0;
+let page = 1;
 
-const display = async (index) => {
+const display = async (index, page) => {
   try {
-    const data = await fetch("https://rickandmortyapi.com/api/character")
+    const data = await fetch(
+      `https://rickandmortyapi.com/api/character/?page=${page}`
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Could not retrieve data");
@@ -55,12 +58,25 @@ const display = async (index) => {
 
 const nextBtn = () => {
   index++;
-  display(index);
+  if (index > 19) {
+    index = 0;
+    page++;
+  }
+  display(index, page);
 };
 
 const backBtn = () => {
   index--;
-  display(index);
+  console.log(index);
+  if (index < 0) {
+    index = 19;
+    page--;
+    if (page < 1) {
+      page = 1;
+      index = 0;
+    }
+  }
+  display(index, page);
 };
 
-display(index);
+display(index, page);
