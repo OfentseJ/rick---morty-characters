@@ -46,7 +46,7 @@ body{
 }
 
 .container{
-    width: 300px;
+    width: 275px;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -104,6 +104,10 @@ a:hover {
 
 #search{
     height: 28px;
+}
+
+.details{
+    width:75%;
 }
 
 footer {
