@@ -1,9 +1,8 @@
-const container = document.getElementById("container");
-
-let index = 0;
+const section = document.getElementById("section");
+const span = document.getElementById("page-number");
 let page = 1;
 
-const display = async (index, page) => {
+const display = async (page) => {
   try {
     const data = await fetch(
       `https://rickandmortyapi.com/api/character/?page=${page}`
@@ -16,66 +15,58 @@ const display = async (index, page) => {
       })
       .catch((error) => console.error(error));
 
-    const { name, status, species, gender, origin, image } =
-      data.results[index];
-
-    container.innerHTML = `
-      <div class="image-container" id="image_container">
-        <img src='${image}' alt='An image of ${name}'/>
-      </div>
-      <div class="details">
-      <table>
-        <tr>
-          <td>Name: </td>
-          <td>${name}</td>
-        </tr>
-        <tr>
-          <td>Status: </td>
-          <td>${status}</td>
-        </tr>
-        <tr>
-          <td>Species: </td>
-          <td>${species}</td>
-        </tr>
-        <tr>
-          <td>Gender: </td>
-          <td>${gender}</td>
-        </tr>
-        <tr>
-          <td>Origin: </td>
-          <td>${origin.name}</td>
-        </tr>
-      </table>
-      </div>
-      <div class="btns">
-        <button onclick="backBtn()">back</button>
-        <button onclick="nextBtn()">next</button>
+    section.innerHTML = data.results
+      .map((card) => {
+        return `
+      <div class="container">
+        <div class="image-container" id="image_container">
+          <img src='${card.image}' alt='An image of ${card.name}'/>
+        </div>
+        <div class="details">
+        <table>
+          <tr>
+            <td>Name: </td>
+            <td>${card.name}</td>
+          </tr>
+          <tr>
+            <td>Status: </td>
+            <td>${card.status}</td>
+          </tr>
+          <tr>
+            <td>Species: </td>
+            <td>${card.species}</td>
+          </tr>
+          <tr>
+            <td>Gender: </td>
+            <td>${card.gender}</td>
+          </tr>
+          <tr>
+            <td>Origin: </td>
+            <td>${card.origin.name}</td>
+          </tr>
+        </table>
+        </div>
       </div>`;
+      })
+      .join("");
+    span.innerText = page;
   } catch (error) {
     console.log("Error:", error);
   }
 };
 
 const nextBtn = () => {
-  index++;
-  if (index > 19) {
-    index = 0;
-    page++;
-  }
-  display(index, page);
+  window.scrollTo({ top: 0 });
+  page++;
+  if (page > 42) page = 1;
+  display(page);
 };
 
 const backBtn = () => {
-  index--;
-  if (index < 0) {
-    index = 19;
-    page--;
-    if (page < 1) {
-      page = 1;
-      index = 0;
-    }
-  }
-  display(index, page);
+  window.scrollTo({ top: 0 });
+  page--;
+  if (page < 1) page = 42;
+  display(page);
 };
 
-display(index, page);
+display(page);

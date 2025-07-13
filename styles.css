@@ -3,7 +3,13 @@
     --color-2: #e4a788;
     --color-3: #f0e14a;
     --color-4: #97ce4c;
-    --color-5: #e89ac7;
+    --color-5: #9ac5e8;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    * {
+        scroll-behavior: smooth;
+    }
 }
 
 *{
@@ -15,20 +21,33 @@
     src: url(fonts/WubbaLubbaDubDub.ttf);
 }
 
+
 body{
     font-family: WubbaLubbaDubDub;
+    font-weight: bold;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-color: var(--color-5);
+    color: var(--color-1);
+}
+
+.section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .container{
     width: 300px;
-    height: 440px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,7 +55,7 @@ body{
     border-radius: 10px;
     background-color: var(--color-4);
     border: 2px solid var(--color-1);
-    color: beige;
+    color: var(--color-1);
 }
 
 .image-container{
@@ -47,6 +66,17 @@ body{
 .image-container > img{
     width: 200px;
     height: 200px;
+    border: 2px solid var(--color-1);
+    border-radius: 10px;
+}
+
+.btns{
+    margin: 10px;
+    position: fixed;
+    bottom: 50px;
+    display: flex;
+    gap: 10px;
+    color: var(--color-1);
 }
 
 button{
@@ -74,4 +104,11 @@ a:hover {
 
 #search{
     height: 28px;
+}
+
+footer {
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    color: var(--color-1);
 }
